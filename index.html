@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVA Advogados - Duarte, Vieira & Associados | Sociedade de Advogados em Lisboa</title>
+    <meta name="description" content="DVA Advogados é uma sociedade de advogados em Lisboa especializada em Golden Visa, abertura de empresas, direito imobiliário e assessoria completa em direito português desde 2006.">
+    <meta name="author" content="DVA Advogados">
+    <meta name="keywords" content="advogados Lisboa, Golden Visa Portugal, abertura empresas Portugal, direito imobiliário, visto investimento, autorização residência Portugal">
+    
+    <meta property="og:title" content="DVA Advogados - Sociedade de Advogados em Lisboa">
+    <meta property="og:description" content="Sociedade de advogados especializada em Golden Visa, abertura de empresas e direito imobiliário em Portugal desde 2006.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    <meta property="og:locale" content="pt_PT">
+    <meta property="og:locale:alternate" content="en_GB">
+    
+    <link rel="canonical" href="https://dvaadvogados.pt/" />
+    <link rel="alternate" href="https://dvaadvogados.pt/" hreflang="pt-PT" />
+    <link rel="alternate" href="https://dvaadvogados.pt/en/" hreflang="en" />
+    <link rel="alternate" href="https://dvaadvogados.pt/" hreflang="x-default" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <a href="tel:+351210113641" class="top-bar-link">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <span>+351 210 113 641</span>
+                    </a>
+                    <a href="mailto:contacto@dvaadvogados.pt" class="top-bar-link">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>contacto@dvaadvogados.pt</span>
+                    </a>
+                </div>
+                <div class="top-bar-right">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>Av. da República, nº 56-D, 1º Andar, Lisboa</span>
+
+                    <div class="lang-switcher" aria-label="Language selector">
+                        <a class="lang-btn" href="/" aria-pressed="true">PT</a>
+                        <span class="lang-sep">|</span>
+                        <a class="lang-btn" href="/en/" aria-pressed="false">EN</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <nav class="container">
+            <div class="nav-content">
+                <button class="logo" onclick="scrollToSection('home')">
+                    DVA<span class="logo-accent"> ADVOGADOS</span>
+                </button>
+                
+                <div class="nav-links">
+                    <button class="nav-link" onclick="scrollToSection('sobre')">SOBRE NÓS</button>
+                    <button class="nav-link" onclick="scrollToSection('servicos')">SERVIÇOS</button>
+                    <button class="nav-link" onclick="scrollToSection('equipa')">EQUIPA</button>
+                    <button class="nav-link" onclick="scrollToSection('contactos')">CONTACTOS</button>
+                </div>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <svg id="menu-icon" class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg id="close-icon" class="icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="mobile-menu">
+                <button onclick="scrollToSection('sobre')">SOBRE NÓS</button>
+                <button onclick="scrollToSection('servicos')">SERVIÇOS</button>
+                <button onclick="scrollToSection('equipa')">EQUIPA</button>
+                <button onclick="scrollToSection('contactos')">CONTACTOS</button>
+                
+                <div class="mobile-menu-contact">
+                    <a href="tel:+351210113641" class="mobile-contact-link">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <span>+351 210 113 641</span>
+                    </a>
+                    <a href="mailto:contacto@dvaadvogados.pt" class="mobile-contact-link">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>contacto@dvaadvogados.pt</span>
+                    </a>
+                </div>
+
+                <hr class="mobile-divider">
+
+                <div class="mobile-lang-switcher">
+                    <a class="lang-btn" href="/" aria-pressed="true">PT</a>
+                    <span class="lang-sep">|</span>
+                    <a class="lang-btn" href="/en/" aria-pressed="false">EN</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-image">
+                <video
+                class="hero-video"
+                src="images/Video-DVAAdvogados.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-hidden="true">
+                </video>
+
+            </div>
+            
+            <div class="hero-content container">
+                <h1 class="hero-title fade-in">DVA ADVOGADOS</h1>
+                <p class="hero-subtitle fade-in" style="animation-delay: 0.2s;">
+                    Direito por excelência, eficiência, experiência e transparência nos processos
+                </p>
+                <div class="hero-buttons fade-in" style="animation-delay: 0.4s;">
+                    <button class="btn btn-primary" onclick="scrollToSection('sobre')">Saiba Mais</button>
+                    <button class="btn btn-outline" onclick="scrollToSection('contactos')">Fale Connosco</button>
+                </div>
+            </div>
+            
+            <button class="scroll-indicator" onclick="scrollToSection('sobre')" aria-label="Scroll para conteúdo">
+                <svg class="icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+        </section>
+
+        <!-- About Section -->
+        <section id="sobre" class="section section-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Sobre Nós</h2>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <p><strong>Duarte, Vieira e Associados, RL</strong> é uma sociedade de advogados criada em 2006.</p>
+                        <p>A sociedade e os seus sócios têm colaborado com empresas e indivíduos nacionais e estrangeiros prestando um serviço completo nas várias vertentes do Direito português. Com mais de 10 anos de experiência, actuando no direito empresarial, a DVA Advogados conta com uma equipa multidisciplinar, auxiliando as empresas desde a consultoria em direito tributário, abertura de empresas, bem como todos os passos legais e necessários para atuação no mercado português.</p>
+                        <p>Aconselhamos grandes sociedades, investidores, instituições financeiras e indivíduos na Europa, Ásia, Estados Unidos, Angola e Brasil, nos mais diversos setores da economia. Actualmente a expansão da sociedade passa pela abertura de um escritorio em Hong Kong.</p>
+                    </div>
+                    
+                    <div class="about-text">
+                        <p>Para quem pretender viver em Portugal ajudamos os nossos clientes a obter <strong>Vistos Gold</strong> (autorização de residência por Investimento), bem como todo o tipo de autorizações de residência e Estatuto de Não Residente Fiscal.</p>
+                        <p>Os nossos clientes têm fácil e directo acesso aos sócios seniores e à equipa, o que nos permite compreender profundamente seus respectivos negócios e apresentar soluções eficientes e estruturadas "sob medida", possibilitando a construção de relacionamentos fortes e duradouros.</p>
+                        <p>O nosso compromisso é prestar um <strong>serviço de excelência</strong> para os nossos clientes, assentados na honestidade, confiança, transparência, eficiência e competência.</p>
+                    </div>
+                </div>
+                
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="highlight-title">Desde 2006</h3>
+                        <p class="highlight-desc">20 anos de experiência</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="highlight-title">Internacional</h3>
+                        <p class="highlight-desc">Clientes em Europa, Ásia, EUA, Angola e Brasil</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="7"></circle>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="highlight-title">Excelência</h3>
+                        <p class="highlight-desc">Serviço de alta qualidade e confiança</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="highlight-title">Equipa Multidisciplinar</h3>
+                        <p class="highlight-desc">Especialistas em diversas áreas do direito</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="servicos" class="section section-muted">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Serviços</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">
+                        A nossa sociedade tem comprovada experiência no apoio a investidores que pretendam fixar-se em Portugal. Com efeito, a criação de um grupo especializado composto por advogados especialistas em direito da imigração, fiscal, imobiliário, sucessório e societário, possibilita a oferta de um acompanhamento personalizado a cada um dos seus clientes.
+                    </p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-handshake-icon lucide-handshake"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+                        </div>
+                        <h3 class="service-title">Golden Visa</h3>
+                        <p class="service-desc">
+                            Portugal oferece condições excepcionais do ponto de vista fiscal e migratório ao estabelecimento de estrangeiros no nosso país, sendo muito procurados os programas especiais do estatuto do residente não habitual e o Golden Visa.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building-icon lucide-building"><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M12 6h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/><path d="M8 6h.01"/><path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/><rect x="4" y="2" width="16" height="20" rx="2"/></svg>
+                        </div>
+                        <h3 class="service-title">Opening of Companies</h3>
+                        <p class="service-desc">
+                            Representamos e ajudamos os nossos clientes, de diferentes dimensões e de todos os setores em operações de incorporação, fusão e aquisição, em reestruturações societárias, judiciais e extrajudiciais, corporate governance, em assuntos de direito societário, comercial e de contratos e ainda na negociação de parcerias e joint-ventures.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-landmark-icon lucide-landmark"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg>
+                        </div>
+                        <h3 class="service-title">Bank Accounts</h3>
+                        <p class="service-desc">
+                            O Departamento de Direito Bancário e Financeiro presta assessoria na abertura de contas bancárias em Portugal por cidadãos ou empresas estrangeiras, com a celeridade necessária ao sucesso dos negócios dos nossos clientes.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="additional-services">
+                    <h3 class="additional-services-title">Outras Áreas de Especialização</h3>
+                    <div class="additional-services-grid">
+                        <div class="additional-service">
+                            <div class="additional-service-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="additional-service-title">Direito da Imigração</h4>
+                                <p class="additional-service-desc">Assessoria completa em autorizações de residência, nacionalidade e vistos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="additional-service">
+                            <div class="additional-service-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="additional-service-title">Direito Imobiliário</h4>
+                                <p class="additional-service-desc">Acompanhamento em transações imobiliárias e investimentos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="additional-service">
+                            <div class="additional-service-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="additional-service-title">Direito Fiscal</h4>
+                                <p class="additional-service-desc">Consultoria tributária e planeamento fiscal internacional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="services-additional-info">
+                    <p>
+                        Igualmente assessoramos os nossos clientes estrangeiros que pretendam adquirir nacionalidade portuguesa ou simplesmente imigrar para Portugal ao abrigo de outras autorizações de residência, como para efeitos de trabalho, qualificada, de rendimento, para estudante, startup, de reformado ou de empreendedor.
+                    </p>
+                    <p>
+                        No nosso serviço está incluída uma criteriosa organização, revisão e submissão dos pedidos de autorização de residência junto das entidades competentes, bem como acompanhamos o cliente em todas as fases do investimento, desde a sua estruturação até ao planeamento sucessório internacional.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="equipa" class="section section-white">
+            <div class="container">
+                <div class="section-header">
+                <h2 class="section-title">A Nossa Equipa</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Com a nossa experiência e conhecimentos adquiridos acompanhamos, juridicamente, os investidores estrangeiros,
+                    através de uma Equipa de Imigração composta por especialistas em Direito da Imigração, Direito Fiscal,
+                    Direito Societário e Direito Imobiliário.
+                </p>
+                </div>
+
+                <div class="team-grid">
+                <!-- Membro 1 -->
+                <div class="team-card">
+                    <div class="team-image">
+                    <img src="images/luismiguelduarte.jpg" alt="Luis Miguel Duarte">
+                    </div>
+                    <div class="team-content">
+                    <h3 class="team-name">Luis Miguel Duarte</h3>
+                    <a href="mailto:lmduarte@dvaadvogados.pt" class="team-email">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>lmduarte@dvaadvogados.pt</span>
+                    </a>
+                    <p class="team-role">Senior Partner</p>
+                    </div>
+                </div>
+
+            <!-- Membro 2 -->
+            <div class="team-card">
+                <div class="team-image">
+                <img src="images/alexandrevieira.jpg" alt="Alexandre Vieira">
+                </div>
+                <div class="team-content">
+                <h3 class="team-name">Alexandre Vieira</h3>
+                <a href="mailto:alexandre.vieira@dvaadvogados.pt" class="team-email">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span>alexandre.vieira@dvaadvogados.pt</span>
+                </a>
+                <p class="team-role">Senior Partner</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section id="contactos" class="section section-muted">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Fale Connosco</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">
+                        Entre em contacto connosco para agendar uma consulta ou obter mais informações sobre os nossos serviços.
+                    </p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3 class="contact-info-title">Mais Informações</h3>
+                        
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="contact-card-title">Morada</h4>
+                                <a href="https://goo.gl/maps/AnaaRW1k9TEydQMJ9" target="_blank" rel="noopener noreferrer" class="contact-card-link">
+                                    <p>Av. da República, nº 56-D, 1º Andar</p>
+                                    <p>1050-196, Lisboa, Portugal</p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="contact-card-title">Telefone / Fax</h4>
+                                <a href="tel:+351210113641" class="contact-card-link">
+                                    <p>+351 210 113 641</p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="contact-card-title">Email</h4>
+                                <a href="mailto:contacto@dvaadvogados.pt" class="contact-card-link">
+                                    <p>contacto@dvaadvogados.pt</p>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="contact-card-title">Horário</h4>
+                                <p class="contact-card-text">Segunda a Sexta: 9h - 18h</p>
+                                <p class="contact-card-text">Sábado e Domingo: Fechado</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <h3 class="contact-form-title">Envie-nos uma Mensagem</h3>
+                        <form id="contact-form" class="contact-form" onsubmit="handleFormSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">Nome (obrigatório)</label>
+                                <input type="text" id="name" name="name" required placeholder="O seu nome">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email (obrigatório)</label>
+                                <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Como podemos ajudar?"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">
+                        DVA<span class="logo-accent"> ADVOGADOS</span>
+                    </h3>
+                    <p class="footer-desc">
+                        Sociedade de advogados em Lisboa, especializada em Golden Visa, abertura de empresas e direito imobiliário desde 2006.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-links-title">Links Rápidos</h4>
+                    <ul>
+                        <li><button onclick="scrollToSection('sobre')">Sobre Nós</button></li>
+                        <li><button onclick="scrollToSection('servicos')">Serviços</button></li>
+                        <li><button onclick="scrollToSection('equipa')">Equipa</button></li>
+                        <li><button onclick="scrollToSection('contactos')">Contactos</button></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-contact-title">Contacto</h4>
+                    <ul>
+                        <li>
+                            <a href="https://goo.gl/maps/AnaaRW1k9TEydQMJ9" target="_blank" rel="noopener noreferrer" class="footer-contact-link">
+                                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>
+                                    Av. da República, nº 56-D, 1º Andar<br>
+                                    1050-196, Lisboa, Portugal
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+351210113641" class="footer-contact-link">
+                                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                                <span>+351 210 113 641</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:contacto@dvaadvogados.pt" class="footer-contact-link">
+                                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <span>contacto@dvaadvogados.pt</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> DVA Advogados - Duarte, Vieira & Associados, RL. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
