@@ -658,6 +658,89 @@ a {
 }
 
 
+
+
+
+/* ===== Services Accordion (3×2 centrado; abre sem esticar os outros) ===== */
+.services-accordion{
+  /* layout em FLEX para não igualar alturas entre colunas */
+  --acc-gap: 1.25rem;
+  --acc-col: 1;                           /* mobile: 1 col */
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--acc-gap);
+  align-items: flex-start;                /* NÃO esticar os irmãos */
+  justify-content: center;                /* centrado quando sobra espaço */
+}
+
+/* tablet: 2 colunas */
+@media (min-width:640px){ .services-accordion{ --acc-col: 2; } }
+/* desktop: 3 colunas (3x2) */
+@media (min-width:1024px){ .services-accordion{ --acc-col: 3; } }
+
+/* largura exata por coluna considerando o gap */
+.services-accordion .acc-item{
+  flex: 0 0 calc( (100% - (var(--acc-col) - 1) * var(--acc-gap)) / var(--acc-col) );
+  background: var(--card);
+  border-radius: .5rem;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.services-accordion .acc-item:hover{ box-shadow: var(--shadow-hover); }
+
+/* Cabeçalho com altura fixa */
+.acc-header{
+  width: 100%;
+  min-height: 72px;
+  padding: 1rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+  text-align: left;
+  background: var(--card);
+  color: var(--primary);
+}
+.acc-left{ display:inline-flex; align-items:center; gap:.85rem; }
+.acc-icon{
+  width:40px; height:40px; border-radius:999px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background:var(--gradient-accent); color:var(--accent-foreground);
+}
+.acc-title{ font-family:'Roboto Slab',serif; font-size:1.125rem; font-weight:600; }
+.acc-chevron{ transition: transform .25s ease; }
+.acc-item.open .acc-chevron{ transform: rotate(180deg); }
+
+/* Painel com transição suave */
+.acc-panel{
+  border-top: 1px solid var(--border);
+  padding: 0 1.25rem;          /* laterais fixas */
+  padding-top: 0;              /* fechado */
+  padding-bottom: 0;           /* fechado */
+  overflow: hidden;
+  max-height: 0;               /* fechado */
+  opacity: 0;                  /* fechado */
+  will-change: max-height, opacity;
+  transition:
+    max-height .35s cubic-bezier(.4,0,.2,1),
+    opacity .25s ease,
+    padding-top .25s ease,
+    padding-bottom .25s ease;
+}
+.acc-item.open .acc-panel{
+  /* padding só aparece aberto (valores visuais) */
+  padding-top: .9rem;
+  padding-bottom: 1.1rem;
+  opacity: 1;
+}
+
+/* evita cortar a última linha por causa de margins */
+.acc-panel > :last-child { margin-bottom: 0; }
+
+
+
+
+
 /* ===== Team Section (reduzido 30%) ===== */
 .team-grid {
   display: grid;
