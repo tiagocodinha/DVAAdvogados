@@ -169,20 +169,22 @@ a {
     padding: 1rem 0;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    color: var(--primary);
-    transition: color 0.3s;
+.logo { 
+  display: inline-flex; 
+  align-items: center; 
+  padding: 0; 
+  border: 0; 
+  background: transparent; 
+  color: inherit;          /* evita herdar hover de cor do texto */
 }
 
-.logo:hover {
-    color: var(--accent);
-}
+.logo:hover { color: inherit; } /* não mudar cor do texto (não há texto) */
 
-.logo-accent {
-    color: var(--accent);
+.logo-img {
+  height: 25px;            /* altura do logo desktop */
+  width: auto;
+  display: block;
+  transition: transform .2s ease;
 }
 
 .nav-links {

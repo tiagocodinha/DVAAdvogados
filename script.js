@@ -274,26 +274,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-/* ===== ACCORDEÃO ROBUSTO (um aberto de cada vez; anti-spam; sem cortar texto) ===== */
+/* ===== ACCORDEÃO (drop-in suavizado; sem prender) ===== */
 (function setupAccordionRobusto() {
   const items = [...document.querySelectorAll('.services-accordion .acc-item')];
   if (!items.length) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   const parts = items.map(item => ({
     item,
     header: item.querySelector('.acc-header'),
     panel:  item.querySelector('.acc-panel')
   }));
 
-  const clearEnd = (p) => {
-    if (p.panel._endHandler) {
-      p.panel.removeEventListener('transitionend', p.panel._endHandler);
-      p.panel._endHandler = null;
-    }
-  };
+  // evita cliques repetidos durante a transição (a “prender” vinha daqui)
+  let busy = false;
+  const UNLOCK_MS = 420; // ≈ à tua transição .35s
+  const lock = () => { busy = true; setTimeout(()=>busy=false, UNLOCK_MS); };
 
+  const forceReflow = el => { void el.offsetHeight; };
+  const clearEnd = p => {
+    if (p._end) { p.panel.removeEventListener('transitionend', p._end); p._end = null; }
+  };
   const setMax = (p, v) => { p.panel.style.maxHeight = v; };
 
   const closeItem = (p) => {
@@ -302,63 +303,73 @@ document.addEventListener('DOMContentLoaded', () => {
     clearEnd(p);
     p.panel.hidden = false;
 
-    // ponto inicial = altura atual (com padding aberto)
+    // estado de partida = altura atual (com padding aberto)
     const start = p.panel.scrollHeight;
     p.panel.style.transition = 'none';
     setMax(p, start + 'px');
-    p.panel.getBoundingClientRect();     // reflow
+    forceReflow(p.panel);
 
-    // agora animamos: tirar padding (classe) + levar max-height a 0
+    // retirar classe e animar para 0 num frame separado (evita "salto")
     p.item.classList.remove('open');
     p.header.setAttribute('aria-expanded', 'false');
-    p.panel.style.transition = '';
-    p.panel.style.opacity = '0';
-    setMax(p, '0px');
 
-    if (reduceMotion) { p.panel.hidden = true; return; }
+    requestAnimationFrame(() => {
+      if (reduceMotion) {
+        setMax(p, '0px');
+        p.panel.hidden = true;
+        p.panel.style.transition = '';
+        return;
+      }
 
-    p.panel._endHandler = (e) => {
-      if (e.propertyName !== 'max-height') return;
-      p.panel.hidden = true;
-      clearEnd(p);
-    };
-    p.panel.addEventListener('transitionend', p.panel._endHandler);
+      p.panel.style.transition = '';  // volta às transições do CSS
+      p.panel.style.opacity = '0';
+      setMax(p, '0px');
+
+      p._end = (e) => {
+        if (e.propertyName !== 'max-height') return;
+        p.panel.hidden = true;
+        clearEnd(p);
+      };
+      p.panel.addEventListener('transitionend', p._end);
+    });
   };
 
   const openItem = (p) => {
-    // fecha os outros
+    // fecha os outros primeiro
     parts.forEach(x => { if (x !== p) closeItem(x); });
 
     clearEnd(p);
     p.panel.hidden = false;
 
-    // estabiliza o ponto de partida (mesmo se a meio de outra animação)
-    const current = p.panel.offsetHeight;
+    // estabiliza o ponto de partida
+    const current = p.panel.offsetHeight; // 0 se fechado
     p.panel.style.transition = 'none';
     setMax(p, current + 'px');
-    p.panel.getBoundingClientRect();     // reflow
+    forceReflow(p.panel);
 
-    // aplica estado aberto p/ medir com padding
+    // aplica estado aberto para medir com padding
     p.item.classList.add('open');
     p.header.setAttribute('aria-expanded', 'true');
     p.panel.style.opacity = '1';
 
-    // destino = altura real do conteúdo
+    // mede o destino depois de a classe estar aplicada
     const target = p.panel.scrollHeight;
 
-    // anima até ao destino
-    p.panel.style.transition = '';
-    setMax(p, target + 'px');
+    // anima num frame separado: evita o “engasgar” antes de abrir
+    requestAnimationFrame(() => {
+      if (reduceMotion) { setMax(p, 'none'); return; }
 
-    if (reduceMotion) { setMax(p, 'none'); return; }
+      p.panel.style.transition = '';
+      setMax(p, target + 'px');
 
-    p.panel._endHandler = (e) => {
-      if (e.propertyName !== 'max-height') return;
-      // liberta a altura -> nunca corta textos longos nem após resize
-      setMax(p, 'none');
-      clearEnd(p);
-    };
-    p.panel.addEventListener('transitionend', p.panel._endHandler);
+      p._end = (e) => {
+        if (e.propertyName !== 'max-height') return;
+        // liberta a altura para não cortar se o conteúdo crescer
+        setMax(p, 'none');
+        clearEnd(p);
+      };
+      p.panel.addEventListener('transitionend', p._end);
+    });
   };
 
   // estado inicial + handlers
@@ -369,14 +380,17 @@ document.addEventListener('DOMContentLoaded', () => {
     p.panel.style.opacity = '0';
 
     p.header.addEventListener('click', () => {
+      if (busy) return;
+      lock();
       if (p.item.classList.contains('open')) closeItem(p);
       else openItem(p);
     });
   });
 
-  // se redimensionares, mantém o aberto sem cortes
+  // mantém o aberto sem cortes em resize
   window.addEventListener('resize', () => {
     const open = parts.find(p => p.item.classList.contains('open'));
     if (open) setMax(open, 'none');
   });
 })();
+

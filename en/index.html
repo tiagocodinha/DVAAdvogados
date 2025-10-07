@@ -65,9 +65,16 @@
   <header id="header" class="header">
     <nav class="container">
       <div class="nav-content">
-        <button class="logo" onclick="scrollToSection('home')">
-          DVA<span class="logo-accent"> ADVOGADOS</span>
-        </button>
+        <button class="logo" onclick="scrollToSection('home')" aria-label="Ir para início">
+                <img
+                    src="/images/logo.svg"
+                    alt="DVA Advogados"
+                    class="logo-img"
+                    width="160" height="40"
+                    decoding="async"
+                    loading="eager"
+                >
+                </button>
 
         <div class="nav-links">
           <button class="nav-link" onclick="scrollToSection('sobre')">ABOUT</button>
@@ -222,7 +229,7 @@
       </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section (ACCORDION) -->
     <section id="servicos" class="section section-muted">
       <div class="container">
         <div class="section-header">
@@ -233,85 +240,155 @@
           </p>
         </div>
 
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-handshake-icon lucide-handshake"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+        <!-- ACCORDION -->
+        <div class="services-accordion" role="list">
+          <!-- Golden Visa -->
+          <article class="acc-item" role="listitem">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-gv">
+              <span class="acc-left">
+                <span class="acc-icon">
+                  <!-- handshake -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/>
+                    <path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>
+                  </svg>
+                </span>
+                <span class="acc-title">Golden Visa</span>
+              </span>
+              <svg class="acc-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="acc-gv" class="acc-panel" hidden>
+              <p>
+                Portugal offers highly attractive tax and immigration conditions for foreign residents, with the Golden Visa and the Non-Habitual Resident regime among the most sought-after programmes.
+              </p>
             </div>
-            <h3 class="service-title">Golden Visa</h3>
-            <p class="service-desc">
-              Portugal offers highly attractive tax and immigration conditions for foreign residents, with the Golden Visa and the Non-Habitual Resident regime among the most sought-after programmes.
-            </p>
-          </div>
+          </article>
 
-          <div class="service-card">
-            <div class="service-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building-icon lucide-building"><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M12 6h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/><path d="M8 6h.01"/><path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/><rect x="4" y="2" width="16" height="20" rx="2"/></svg>
+          <!-- Company Formation -->
+          <article class="acc-item" role="listitem">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-emp">
+              <span class="acc-left">
+                <span class="acc-icon">
+                  <!-- building -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M12 6h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/><path d="M8 6h.01"/><path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/><rect x="4" y="2" width="16" height="20" rx="2"/>
+                  </svg>
+                </span>
+                <span class="acc-title">Company Formation</span>
+              </span>
+              <svg class="acc-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="acc-emp" class="acc-panel" hidden>
+              <p>
+                We assist clients of all sizes and sectors with incorporation, mergers and acquisitions, corporate restructurings, corporate governance, commercial and contract matters, as well as the negotiation of partnerships and joint ventures.
+              </p>
             </div>
-            <h3 class="service-title">Company Formation</h3>
-            <p class="service-desc">
-              We assist clients of all sizes and sectors with incorporation, mergers and acquisitions, corporate restructurings, corporate governance, commercial and contract matters, as well as the negotiation of partnerships and joint ventures.
-            </p>
-          </div>
+          </article>
 
-          <div class="service-card">
-            <div class="service-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-landmark-icon lucide-landmark"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg>
+          <!-- Bank Accounts -->
+          <article class="acc-item" role="listitem">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-banks">
+              <span class="acc-left">
+                <span class="acc-icon">
+                  <!-- landmark -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/>
+                  </svg>
+                </span>
+                <span class="acc-title">Bank Accounts</span>
+              </span>
+              <svg class="acc-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="acc-banks" class="acc-panel" hidden>
+              <p>
+                Our Banking &amp; Finance team provides assistance with opening bank accounts in Portugal for foreign individuals and companies, with the agility your business needs.
+              </p>
             </div>
-            <h3 class="service-title">Bank Accounts</h3>
-            <p class="service-desc">
-              Our Banking & Finance team provides assistance with opening bank accounts in Portugal for foreign individuals and companies, with the agility your business needs.
-            </p>
-          </div>
+          </article>
+
+          <!-- Immigration Law -->
+          <article class="acc-item" role="listitem">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-imm">
+              <span class="acc-left">
+                <span class="acc-icon">
+                  <!-- file -->
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </span>
+                <span class="acc-title">Immigration Law</span>
+              </span>
+              <svg class="acc-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="acc-imm" class="acc-panel" hidden>
+              <p>
+                Comprehensive support with residence permits, nationality and visas.
+              </p>
+            </div>
+          </article>
+
+          <!-- Real Estate Law -->
+          <article class="acc-item" role="listitem">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-re">
+              <span class="acc-left">
+                <span class="acc-icon">
+                  <!-- home -->
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                </span>
+                <span class="acc-title">Real Estate Law</span>
+              </span>
+              <svg class="acc-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="acc-re" class="acc-panel" hidden>
+              <p>
+                Advisory on property transactions and investments.
+              </p>
+            </div>
+          </article>
+
+          <!-- Tax Law -->
+          <article class="acc-item" role="listitem">
+            <button class="acc-header" aria-expanded="false" aria-controls="acc-tax">
+              <span class="acc-left">
+                <span class="acc-icon">
+                  <!-- screen/document -->
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                </span>
+                <span class="acc-title">Tax Law</span>
+              </span>
+              <svg class="acc-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="acc-tax" class="acc-panel" hidden>
+              <p>
+                Tax consulting and international tax planning.
+              </p>
+            </div>
+          </article>
         </div>
 
-        <div class="additional-services">
-          <h3 class="additional-services-title">Other Areas of Expertise</h3>
-          <div class="additional-services-grid">
-            <div class="additional-service">
-              <div class="additional-service-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-              </div>
-              <div>
-                <h4 class="additional-service-title">Immigration Law</h4>
-                <p class="additional-service-desc">Comprehensive support with residence permits, nationality and visas.</p>
-              </div>
-            </div>
-
-            <div class="additional-service">
-              <div class="additional-service-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
-              </div>
-              <div>
-                <h4 class="additional-service-title">Real Estate Law</h4>
-                <p class="additional-service-desc">Advisory on property transactions and investments.</p>
-              </div>
-            </div>
-
-            <div class="additional-service">
-              <div class="additional-service-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                </svg>
-              </div>
-              <div>
-                <h4 class="additional-service-title">Tax Law</h4>
-                <p class="additional-service-desc">Tax consulting and international tax planning.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <!-- Extra text -->
         <div class="services-additional-info">
           <p>
             We also assist foreign clients who wish to acquire Portuguese nationality or immigrate to Portugal through other residence grounds, such as work, qualified activity, passive income, students, startups, retirees or entrepreneurs.
@@ -322,6 +399,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- Team Section -->
     <section id="equipa" class="section section-white">
