@@ -44,16 +44,14 @@ function scrollToSection(id) {
    ======================= */
 function toggleMobileMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
-  if (mobileMenu) {
-    mobileMenu.classList.toggle('show');
-    if (menuIcon && closeIcon) {
-      menuIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-    }
-  }
+  const btn = document.querySelector('.mobile-menu-btn');
+  if (!mobileMenu || !btn) return;
+
+  const willOpen = !mobileMenu.classList.contains('show');
+  mobileMenu.classList.toggle('show');
+  btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
 }
+
 
 /* =======================
    Estado do header no scroll

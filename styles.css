@@ -272,6 +272,12 @@ a {
     .mobile-menu button:hover {
         background-color: var(--muted);
     }
+
+    /* Hamburguer ↔ X controlado por aria-expanded */
+    .mobile-menu-btn #close-icon { display: none; }
+    .mobile-menu-btn[aria-expanded="true"] #menu-icon { display: none; }
+    .mobile-menu-btn[aria-expanded="true"] #close-icon { display: inline; }
+
     
     .mobile-menu-contact {
         margin-top: 1rem;
