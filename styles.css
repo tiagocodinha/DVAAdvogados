@@ -669,24 +669,19 @@ a {
 
 
 
-/* ===== Services Accordion (3×2 centrado; abre sem esticar os outros) ===== */
+/* ===== Services Accordion (fluido por height) ===== */
 .services-accordion{
-  /* layout em FLEX para não igualar alturas entre colunas */
   --acc-gap: 1.25rem;
-  --acc-col: 1;                           /* mobile: 1 col */
+  --acc-col: 1;
   display: flex;
   flex-wrap: wrap;
   gap: var(--acc-gap);
-  align-items: flex-start;                /* NÃO esticar os irmãos */
-  justify-content: center;                /* centrado quando sobra espaço */
+  align-items: flex-start;
+  justify-content: center;
 }
-
-/* tablet: 2 colunas */
 @media (min-width:640px){ .services-accordion{ --acc-col: 2; } }
-/* desktop: 3 colunas (3x2) */
 @media (min-width:1024px){ .services-accordion{ --acc-col: 3; } }
 
-/* largura exata por coluna considerando o gap */
 .services-accordion .acc-item{
   flex: 0 0 calc( (100% - (var(--acc-col) - 1) * var(--acc-gap)) / var(--acc-col) );
   background: var(--card);
@@ -699,7 +694,6 @@ a {
 }
 .services-accordion .acc-item:hover{ box-shadow: var(--shadow-hover); }
 
-/* Cabeçalho com altura fixa */
 .acc-header{
   width: 100%;
   min-height: 72px;
@@ -716,34 +710,31 @@ a {
   background:var(--gradient-accent); color:var(--accent-foreground);
 }
 .acc-title{ font-family:'Roboto Slab',serif; font-size:1.125rem; font-weight:600; }
-.acc-chevron{ transition: transform .25s ease; }
+.acc-chevron{ transition: transform 220ms ease; }
 .acc-item.open .acc-chevron{ transform: rotate(180deg); }
 
-/* Painel com transição suave */
+/* Painel: nunca display:none; fechado ocupa 0 por height */
 .acc-panel{
-  border-top: 1px solid var(--border);
-  padding: 0 1.25rem;          /* laterais fixas */
-  padding-top: 0;              /* fechado */
-  padding-bottom: 0;           /* fechado */
+  display: block;            /* <- importante: medir corretamente */
+  height: 0;                 /* fechado */
   overflow: hidden;
-  max-height: 0;               /* fechado */
-  opacity: 0;                  /* fechado */
-  will-change: max-height, opacity;
-  transition:
-    max-height .35s cubic-bezier(.4,0,.2,1),
-    opacity .25s ease,
-    padding-top .25s ease,
-    padding-bottom .25s ease;
-}
-.acc-item.open .acc-panel{
-  /* padding só aparece aberto (valores visuais) */
-  padding-top: .9rem;
-  padding-bottom: 1.1rem;
-  opacity: 1;
+  will-change: height;
+  transition: height 380ms cubic-bezier(.25,.8,.25,1);
+  border-top: 1px solid var(--border);
+  padding: 0 1.25rem;        /* laterais fixas */
 }
 
-/* evita cortar a última linha por causa de margins */
+/* espaçamento vertical só quando aberto (não anima padding) */
+.acc-item.open .acc-panel { padding-top: .9rem; padding-bottom: 1.1rem; }
+
+
 .acc-panel > :last-child { margin-bottom: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .acc-panel { transition: none; }
+  .acc-chevron { transition: none; }
+}
+
 
 
 

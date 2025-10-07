@@ -272,123 +272,105 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-/* ===== ACCORDEÃO (drop-in suavizado; sem prender) ===== */
-(function setupAccordionRobusto() {
-  const items = [...document.querySelectorAll('.services-accordion .acc-item')];
-  if (!items.length) return;
+/* ===== ACCORDEÃO FLUIDO (height px→px, anti-“engasgos”) ===== */
+(function setupAccordionFluidFix() {
+  const root = document.querySelector('.services-accordion');
+  if (!root) return;
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const parts = items.map(item => ({
+  const singleOpen = true;
+  const items = [...root.querySelectorAll('.acc-item')].map(item => ({
     item,
     header: item.querySelector('.acc-header'),
     panel:  item.querySelector('.acc-panel')
   }));
+  const animating = new Set();
+  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // evita cliques repetidos durante a transição (a “prender” vinha daqui)
-  let busy = false;
-  const UNLOCK_MS = 420; // ≈ à tua transição .35s
-  const lock = () => { busy = true; setTimeout(()=>busy=false, UNLOCK_MS); };
+  // estado inicial
+  items.forEach(p => {
+    p.header.setAttribute('aria-expanded','false');
+    p.panel.style.height = '0px';
+  });
 
-  const forceReflow = el => { void el.offsetHeight; };
-  const clearEnd = p => {
-    if (p._end) { p.panel.removeEventListener('transitionend', p._end); p._end = null; }
-  };
-  const setMax = (p, v) => { p.panel.style.maxHeight = v; };
+  function openPanel(p){
+    if (animating.has(p.panel)) return;
+    animating.add(p.panel);
 
-  const closeItem = (p) => {
-    if (!p.item.classList.contains('open')) { p.panel.hidden = true; return; }
+    if (singleOpen){
+      items.forEach(x => { if (x!==p && x.item.classList.contains('open')) closePanel(x, true); });
+    }
 
-    clearEnd(p);
-    p.panel.hidden = false;
+    // ponto de partida (0)
+    const start = p.panel.offsetHeight;   // força layout
+    p.item.classList.add('open');         // aplica padding aberto
+    p.header.setAttribute('aria-expanded','true');
 
-    // estado de partida = altura atual (com padding aberto)
-    const start = p.panel.scrollHeight;
-    p.panel.style.transition = 'none';
-    setMax(p, start + 'px');
-    forceReflow(p.panel);
+    // destino com padding incluído
+    const end = p.panel.scrollHeight;
 
-    // retirar classe e animar para 0 num frame separado (evita "salto")
-    p.item.classList.remove('open');
-    p.header.setAttribute('aria-expanded', 'false');
-
+    // 1ª frame: fixa altura inicial (0)
+    p.panel.style.height = start + 'px';
+    // 2ª frame: anima para o destino
     requestAnimationFrame(() => {
-      if (reduceMotion) {
-        setMax(p, '0px');
-        p.panel.hidden = true;
-        p.panel.style.transition = '';
+      if (prefersReduce){
+        p.panel.style.height = 'auto';
+        animating.delete(p.panel);
         return;
       }
-
-      p.panel.style.transition = '';  // volta às transições do CSS
-      p.panel.style.opacity = '0';
-      setMax(p, '0px');
-
-      p._end = (e) => {
-        if (e.propertyName !== 'max-height') return;
-        p.panel.hidden = true;
-        clearEnd(p);
-      };
-      p.panel.addEventListener('transitionend', p._end);
+      p.panel.style.height = end + 'px';
     });
-  };
 
-  const openItem = (p) => {
-    // fecha os outros primeiro
-    parts.forEach(x => { if (x !== p) closeItem(x); });
+    const onEnd = (e) => {
+      if (e.propertyName !== 'height') return;
+      p.panel.style.height = 'auto';      // liberta para crescer com conteúdo
+      p.panel.removeEventListener('transitionend', onEnd);
+      animating.delete(p.panel);
+    };
+    p.panel.addEventListener('transitionend', onEnd);
+  }
 
-    clearEnd(p);
-    p.panel.hidden = false;
+  function closePanel(p, isGroup=false){
+    if (animating.has(p.panel)) return;
+    animating.add(p.panel);
 
-    // estabiliza o ponto de partida
-    const current = p.panel.offsetHeight; // 0 se fechado
-    p.panel.style.transition = 'none';
-    setMax(p, current + 'px');
-    forceReflow(p.panel);
+    // de auto → px → 0
+    const current = p.panel.scrollHeight;
+    p.panel.style.height = current + 'px';
+    p.item.classList.remove('open');
+    p.header.setAttribute('aria-expanded','false');
 
-    // aplica estado aberto para medir com padding
-    p.item.classList.add('open');
-    p.header.setAttribute('aria-expanded', 'true');
-    p.panel.style.opacity = '1';
-
-    // mede o destino depois de a classe estar aplicada
-    const target = p.panel.scrollHeight;
-
-    // anima num frame separado: evita o “engasgar” antes de abrir
     requestAnimationFrame(() => {
-      if (reduceMotion) { setMax(p, 'none'); return; }
-
-      p.panel.style.transition = '';
-      setMax(p, target + 'px');
-
-      p._end = (e) => {
-        if (e.propertyName !== 'max-height') return;
-        // liberta a altura para não cortar se o conteúdo crescer
-        setMax(p, 'none');
-        clearEnd(p);
-      };
-      p.panel.addEventListener('transitionend', p._end);
+      if (prefersReduce){
+        p.panel.style.height = '0px';
+        animating.delete(p.panel);
+        return;
+      }
+      p.panel.style.height = '0px';
     });
-  };
 
-  // estado inicial + handlers
-  parts.forEach(p => {
-    p.header.setAttribute('aria-expanded', 'false');
-    p.panel.hidden = true;
-    p.panel.style.maxHeight = '0px';
-    p.panel.style.opacity = '0';
+    const onEnd = (e) => {
+      if (e.propertyName !== 'height') return;
+      p.panel.removeEventListener('transitionend', onEnd);
+      animating.delete(p.panel);
+    };
+    p.panel.addEventListener('transitionend', onEnd);
+  }
 
+  items.forEach(p => {
     p.header.addEventListener('click', () => {
-      if (busy) return;
-      lock();
-      if (p.item.classList.contains('open')) closeItem(p);
-      else openItem(p);
+      const isOpen = p.item.classList.contains('open');
+      if (isOpen) closePanel(p);
+      else openPanel(p);
     });
   });
 
-  // mantém o aberto sem cortes em resize
+  // reajusta altura durante resize se estiver a meio da animação/aberto
   window.addEventListener('resize', () => {
-    const open = parts.find(p => p.item.classList.contains('open'));
-    if (open) setMax(open, 'none');
+    const open = items.find(p => p.item.classList.contains('open'));
+    if (!open) return;
+    if (open.panel.style.height !== 'auto') {
+      open.panel.style.height = open.panel.scrollHeight + 'px';
+    }
   });
 })();
 
