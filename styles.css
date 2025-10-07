@@ -12,6 +12,7 @@
     --card: hsl(0, 0%, 100%);
     --card-foreground: hsl(215, 25%, 15%);
     --border: hsl(215, 15%, 85%);
+    --muted-lighter: hsl(40, 30%, 99%);
     
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsla(215, 55%, 20%, 0.95), hsla(215, 55%, 15%, 0.9));
@@ -352,11 +353,16 @@ a {
     overflow: hidden;
 }
 
-.hero-image {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+.hero-logo {
+  width: clamp(200px, 30vw, 340px);
+  height: auto;
+  margin: 0 auto 2rem;
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-in 1s ease-out forwards;
 }
+
 
 .hero-video {
   position: absolute;
@@ -475,6 +481,39 @@ a {
     gap: 3rem;
     margin-bottom: 4rem;
 }
+
+/* ===== BG "world" apenas na parte inferior da secção ===== */
+#sobre {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+#sobre::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* ocupa só a parte inferior (ajusta à altura desejada) */
+  height: 35%; /* podes ajustar entre 35% e 55% consoante o efeito */
+
+  background-color: var(--primary);
+  -webkit-mask: url("/images/world.png") center top / cover no-repeat;
+          mask: url("/images/world.png") center top / cover no-repeat;
+
+  z-index: 0;
+}
+
+/* garante que o conteúdo fica por cima */
+#sobre > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
 
 @media (min-width: 768px) {
     .about-content {
@@ -655,15 +694,23 @@ a {
 }
 
 .services-additional-info {
-    max-width: 64rem;
-    margin: 3rem auto 0;
+  max-width: 64rem;
+  margin: 2.5rem auto 0;
+
+  /* a “caixa” */
+  background: var(--muted-lighter, hsl(40, 30%, 98%)); /* mais claro que a section */
+  border-radius: .5rem;
+  box-shadow: 0 2px 12px hsla(215, 55%, 20%, 0.06);
+  padding: 1.25rem 1.5rem;
 }
 
 .services-additional-info p {
-    color: var(--foreground);
-    line-height: 1.75;
-    margin-bottom: 1rem;
+  color: var(--foreground);
+  line-height: 1.75;
+  margin: 0 0 .9rem;
 }
+.services-additional-info p:last-child { margin-bottom: 0; }
+
 
 
 
