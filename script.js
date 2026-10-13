@@ -328,6 +328,17 @@ document.addEventListener('DOMContentLoaded', () => {
         subtitle.textContent = 'Atualização diária · ' + d;
     }
     setTimeout(() => {
+        // Garante que cada bloco é mais alto que o card, senão o loop nunca chega ao ponto de reset
+        const oneSet = rail.scrollHeight / 3;
+        if (oneSet > 0 && oneSet < wrap.clientHeight * 1.5) {
+            const reps = Math.ceil((wrap.clientHeight * 1.5) / oneSet);
+            rail.innerHTML = '';
+            for (let b = 0; b < 3; b++) {
+                for (let r = 0; r < reps; r++) {
+                    items.forEach(obj => rail.appendChild(buildCard(obj)));
+                }
+            }
+        }
         singleSetHeight = rail.scrollHeight / 3;
         wrap.scrollTop = singleSetHeight;
         scrollAccumulator = singleSetHeight;
