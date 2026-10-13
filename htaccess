@@ -1,0 +1,7 @@
+# Impedir indexação (aplica a todas as respostas)
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+</IfModule>
+
+# (Opcional) Evitar listagens de diretórios
+Options -Indexes
