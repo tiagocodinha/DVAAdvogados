@@ -350,8 +350,10 @@ nav.container { position: relative; }
 /* ===== Hero Section ===== */
 .hero {
     position: relative;
-    height: 100vh;
-    height: 100dvh; /* mobile: exclui a barra do browser — vídeo vai mesmo até ao fundo */
+    min-height: 100vh;
+    min-height: 100dvh; /* mobile: exclui a barra do browser — vídeo vai mesmo até ao fundo */
+    padding: 6rem 0 6.5rem; /* reserva espaço para o header e para a seta, que já não sobrepõe os botões */
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
