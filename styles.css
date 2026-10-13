@@ -461,6 +461,23 @@ nav.container { position: relative; }
 }
 .scroll-indicator:hover { color: var(--accent); }
 
+/* Mobile: a seta entra no fluxo (por baixo dos botões), por isso nunca os sobrepõe,
+   mesmo quando as barras do browser mudam a altura do ecrã */
+@keyframes bounce-flow {
+    0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+    50%      { transform: translateY(0);    animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
+@media (max-width: 768px) {
+    .hero { flex-direction: column; padding: 6rem 0 2rem; }
+    .hero-content { width: 100%; }
+    .scroll-indicator {
+        position: static;
+        transform: none;
+        margin-top: 1.5rem;
+        animation: bounce-flow 1s infinite;
+    }
+}
+
 /* ===== Sections ===== */
 .section { padding: 5rem 0; }
 .section-white { background-color: var(--background); }
