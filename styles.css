@@ -351,7 +351,7 @@ nav.container { position: relative; }
 .hero {
     position: relative;
     min-height: 100vh;
-    min-height: 100dvh; /* mobile: exclui a barra do browser — vídeo vai mesmo até ao fundo */
+    min-height: 100svh; /* altura estável: não muda quando as barras do browser aparecem/desaparecem (dvh fazia a seta saltar) */
     padding: 6rem 0 6.5rem; /* reserva espaço para o header e para a seta, que já não sobrepõe os botões */
     box-sizing: border-box;
     display: flex;
